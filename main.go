@@ -62,7 +62,7 @@ func findIPByArp(mac string, ipv6 bool) (string, error) {
 	for _, line := range strings.Split(string(out), "\n") {
 		cells := strings.Fields(line)
 		if len(cells) < 6 {
-			break
+			continue
 		}
 
 		if cells[4] == mac {
