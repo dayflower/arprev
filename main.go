@@ -65,7 +65,7 @@ func findIPByArp(mac string, ipv6 bool) (string, error) {
 			continue
 		}
 
-		if cells[4] == mac {
+		if cells[4] == mac && cells[5] == "REACHABLE" {
 			ip := cells[0]
 
 			if ipv6 {
