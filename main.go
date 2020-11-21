@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"time"
 )
 
 func usage() {
@@ -17,6 +18,8 @@ func pingToV4NetworkHosts(network string) error {
 		fmt.Fprintln(os.Stderr, "exec nmap command failed.")
 		return err
 	}
+
+	time.Sleep(750 * time.Millisecond)
 
 	return nil
 }
@@ -119,10 +122,10 @@ func main() {
 
 	pingToV4NetworkHosts(network)
 
-	ip, err = findIPByArp(mac, false)
+	ip, err = findIPByArp(mac, ipv6)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		os.Exit(2)
 	}
 	// found
 	if len(ip) > 0 {
