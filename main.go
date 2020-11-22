@@ -19,7 +19,7 @@ func pingToV4NetworkHosts(network string) error {
 		return err
 	}
 
-	time.Sleep(750 * time.Millisecond)
+	time.Sleep(2000 * time.Millisecond)
 
 	return nil
 }
